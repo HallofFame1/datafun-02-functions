@@ -78,3 +78,29 @@ scores = [
 # y is dependent on x (e.g. temperature vs hour of day)
 x_times = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
 y_temps = [2, 5, 8, 20, 21, 23, 24, 27, 30, 31, 31,32]
+
+mean = statistics.mean(scores)
+median = statistics.median(scores)
+try:
+    mode = statistics.mode(scores)
+except statistics.StatisticsError:
+    mode = "unique mode not found"
+variance = statistics.variance(scores)
+StandardDeviation = statistics.stdev(scores)
+
+# Print results
+print("Scores:")
+print("Mean:", mean)
+print("Median:", median)
+print("Mode:", mode)
+print("Variance:", variance)
+print("Standard Deviation:", StandardDeviation)
+
+#  linear regression
+slope, intercept = statistics.linear_regression(x_times, y_temps)
+print("Linear Regression: y =", slope, "+", intercept)
+print("slope: =", slope)
+print("point of interception:",intercept)
+# Estimate future temperature at next hour (13)
+y_future = slope * 13 + intercept
+print(f'Estimated temperature at hour 13: {y_future}')
